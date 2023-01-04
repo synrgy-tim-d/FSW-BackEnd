@@ -1,0 +1,30 @@
+{
+  "name": "fsw-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r dotenv/config bin/www",
+    "dev": "nodemon -r dotenv/config bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/synrgy-tim-d/FSW-Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/synrgy-tim-d/FSW-Backend/issues"
+  },
+  "homepage": "https://github.com/synrgy-tim-d/FSW-Backend#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4"
+  }
+}
