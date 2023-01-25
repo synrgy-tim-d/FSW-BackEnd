@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node -r dotenv/config bin/www",
-    "dev": "nodemon -r dotenv/config bin/www"
+    "dev": "nodemon -r dotenv/config bin/www",
+    "test": "jest test/* --watch --coverage "
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,9 @@
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.28.0"
+  },
+  "devDependencies": {
+    "jest": "^29.4.0",
+    "supertest": "^6.3.3"
   }
 }
