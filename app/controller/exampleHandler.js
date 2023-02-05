@@ -8,7 +8,7 @@ const {
 
 module.exports = async (req, res) => {
   try {
-    const getBooking = await Booking.findAll({
+    const getExample = await Booking.findAll({
       attributes: [
         "booking_id",
         ["booking_date_start", "start"],
@@ -41,7 +41,7 @@ module.exports = async (req, res) => {
         },
       ],
     });
-    res.status(200).json(getBooking);
+    res.status(200).json(getExample);
   } catch (error) {
     res.status(500).json(error.message);
   }
