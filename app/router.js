@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const auth = require("./middleware/auth");
 
 const getExample = require("./controller/exampleHandler");
-const auth = require("./middleware/auth");
+const postBooking = require("./controller/postBookingHandler");
 
 router.use(express.json());
 
@@ -15,5 +16,7 @@ router.get("/test/auth", auth, (req, res) => {
 });
 
 router.get("/test/example", getExample);
+
+router.post("/api/book", auth, postBooking);
 
 module.exports = router;
