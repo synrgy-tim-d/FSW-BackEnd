@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => {
       Kost.hasMany(models.Booking, {
         foreignKey: "kos_id",
       });
+      Kost.belongsTo(models.SetupCity, {
+        foreignKey: "city_id",
+      });
     }
   }
   Kost.init(
