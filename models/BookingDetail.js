@@ -51,6 +51,14 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
       },
       payment_image_url: DataTypes.TEXT,
+      rent_time: {
+        type: DataTypes.ENUM("HARIAN", "MINGGUAN", "BULANAN"),
+        allowNull: false,
+      },
+      rent_price: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
     {
       sequelize,
