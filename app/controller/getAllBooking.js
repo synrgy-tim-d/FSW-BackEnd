@@ -3,6 +3,7 @@ const {
   BookingDetail,
   Kost,
   SetupCity,
+  SetupImage,
 } = require("../../models/index");
 
 module.exports = async (req, res) => {
@@ -20,7 +21,7 @@ module.exports = async (req, res) => {
           attributes: {
             exclude: ["createdAt", "updatedAt"],
           },
-          include: [{ model: SetupCity }],
+          include: [{ model: SetupCity }, { model: SetupImage }],
         },
       ],
       attributes: {
