@@ -38,6 +38,17 @@ module.exports = async (req, res) => {
       rent_time: rent_time,
     });
 
+    await KostRoom.update(
+      {
+        is_available: false,
+      },
+      {
+        where: {
+          id: req.body.room_id,
+        },
+      }
+    );
+
     res.status(200).json({
       message: "Booking Success",
     });
