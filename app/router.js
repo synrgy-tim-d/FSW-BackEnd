@@ -8,6 +8,11 @@ const putWillpay = require("./controller/putWillpayHandler");
 const putIsPaid = require("./controller/putIsPaidHandler");
 const getAllBooking = require("./controller/getAllBooking");
 
+const {
+  oauthGoogle,
+  oauthCallback,
+} = require("./controller/oauthGoogleHandler");
+
 router.use(express.json());
 
 router.get("/", (req, res) => {
@@ -25,5 +30,8 @@ router.get("/api/book", auth, getAllBooking);
 router.post("/api/book", auth, postBooking);
 router.put("/api/book", auth, putWillpay);
 router.put("/api/book/payment", auth, putIsPaid);
+
+router.get("/oauth/:role", oauthGoogle);
+router.get("/Callback", oauthCallback);
 
 module.exports = router;
