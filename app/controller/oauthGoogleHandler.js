@@ -7,7 +7,7 @@ const clientSecret = process.env.OAUTH_CLIENT_SECRET;
 const oAuth2Client = new google.auth.OAuth2(
   clientId,
   clientSecret,
-  "http://localhost:8000/Callback"
+  "https://fsw-backend.up.railway.app/Callback"
 );
 
 // app.use(cors());
