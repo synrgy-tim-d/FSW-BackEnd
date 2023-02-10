@@ -31,7 +31,7 @@ router.post("/api/book", auth, postBooking);
 router.put("/api/book", auth, putWillpay);
 router.put("/api/book/payment", auth, putIsPaid);
 
-router.get("/oauth", oauthGoogle);
+router.get("/oauth/:role", oauthGoogle);
 router.get("/Callback", oauthCallback);
 
 module.exports = router;

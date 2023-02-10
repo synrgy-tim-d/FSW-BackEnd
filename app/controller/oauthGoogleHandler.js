@@ -47,7 +47,9 @@ const oAuth2Client = new google.auth.OAuth2(
 //   });
 // });
 
+let userRole;
 const oauthGoogle = (req, res, next) => {
+  userRole = req.params.role;
   const url = oAuth2Client.generateAuthUrl({
     scope: [
       "https://www.googleapis.com/auth/userinfo.profile",
@@ -62,7 +64,7 @@ const oauthCallback = async (req, res) => {
   const { code } = req.query;
 
   const { tokens } = await oAuth2Client.getToken(code);
-  console.log(tokens);
+  // console.log(tokens);
   const options = {
     uri: "https://be-naqos.up.railway.app/api/auth/google",
     method: "POST",
@@ -71,15 +73,32 @@ const oauthCallback = async (req, res) => {
     },
     form: {
       token: tokens.access_token,
-      roleUser: "PENYEWA",
+      roleUser: userRole,
     },
   };
+  // console.log(options.form);
   request(options, function (error, response, body) {
     if (error) {
       res.status(500).send(error);
     }
-    res.redirect("https://fsw-frontend.vercel.app/");
+    // console.log(acc_tokens, typeof userRole);
+
+    const access_token = JSON.parse(response.body).data.access_token;
+    const refresh_token = JSON.parse(response.body).data.refresh_token;
+    // console.log(access_token, refresh_token);
+
+    res.redirect(
+      `https://naqos.vercel.app/auth/oauth?acc=${access_token}&ref=${refresh_token}`
+    );
   });
 };
+
+// const oauthGoogle = (req, res, next) => {
+//   const url = oAuth2Client.generateAuthUrl({
+//     scope: [
+//       "https://www.googleapis.com/auth/userinfo.profile",
+//       "https://www.googleapis.com/auth/userinfo.email",
+//     ],
+//   });
 
 module.exports = { oauthGoogle, oauthCallback };
