@@ -26,10 +26,13 @@ module.exports = async (req, res) => {
       user_id: req.user.userId,
       kos_id: req.body.kos_id,
       room_id: req.body.room_id,
-      booking_id: `BK-${req.user.userId}-${req.body.room_id.slice(
+      booking_id: `BK-${req.user.userId}-${req.body.kos_id.slice(
         0,
-        8
-      )}-${req.body.booking_date_start.slice(0, 10)}`,
+        4
+      )}${req.body.room_id.slice(0, 4)}-${req.body.booking_date_start.slice(
+        0,
+        10
+      )}`,
     });
 
     await BookingDetail.create({
