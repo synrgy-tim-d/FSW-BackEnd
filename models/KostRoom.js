@@ -29,20 +29,20 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       },
-      price_per_daily: DataTypes.INTEGER,
-      price_per_monthly: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      price_per_weekly: DataTypes.INTEGER,
+      // price_per_daily: DataTypes.INTEGER,
+      // price_per_monthly: {
+      //   type: DataTypes.INTEGER,
+      //   allowNull: false,
+      // },
+      // price_per_weekly: DataTypes.INTEGER,
       room_type: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      rules: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+      // rules: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      // },
       kost_id: DataTypes.UUID,
     },
     {

@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "room_id",
       });
       Booking.belongsTo(models.Kost, {
-        foreignKey: "kos_id",
+        foreignKey: "kost_id",
       });
     }
   }
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      kos_id: {
+      kost_id: {
         type: DataTypes.UUID,
         allowNull: false,
       },

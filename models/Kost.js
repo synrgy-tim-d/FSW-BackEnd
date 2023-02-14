@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "kost_id",
       });
       Kost.hasMany(models.Booking, {
-        foreignKey: "kos_id",
+        foreignKey: "kost_id",
       });
       Kost.belongsTo(models.SetupCity, {
         foreignKey: "city_id",
@@ -79,6 +79,20 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
+      price_per_daily: DataTypes.INTEGER,
+      price_per_monthly: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      price_per_weekly: DataTypes.INTEGER,
+      f_answer_1: DataTypes.STRING,
+      f_answer_2: DataTypes.STRING,
+      f_answer_3: DataTypes.STRING,
+      f_question_1: DataTypes.STRING,
+      f_question_2: DataTypes.STRING,
+      f_question_3: DataTypes.STRING,
+      rules: DataTypes.TEXT,
+      kost_rating: DataTypes.FLOAT,
     },
     {
       sequelize,
