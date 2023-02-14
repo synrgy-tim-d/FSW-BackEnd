@@ -1,15 +1,16 @@
-const { Booking, BookingDetail, KostRoom } = require("../../models/index");
+const { Booking, BookingDetail, Kost } = require("../../models/index");
 
 module.exports = async (req, res) => {
   const rent_time = req.body.rent_time;
   let rent_price;
 
   try {
-    const priceRoom = await KostRoom.findOne({
+    const priceRoom = await Kost.findOne({
       where: {
-        id: req.body.room_id,
+        id: req.body.kos_id,
       },
     });
+    // res.json(priceRoom);
 
     if (rent_time === "HARIAN") {
       rent_price = priceRoom.price_per_daily;
@@ -24,7 +25,7 @@ module.exports = async (req, res) => {
       booking_date_start: req.body.booking_date_start,
       booking_date_end: req.body.booking_date_end,
       user_id: req.user.userId,
-      kos_id: req.body.kos_id,
+      kost_id: req.body.kos_id,
       room_id: req.body.room_id,
       booking_id: `BK-${req.user.userId}-${req.body.kos_id.slice(
         0,
@@ -41,16 +42,16 @@ module.exports = async (req, res) => {
       rent_time: rent_time,
     });
 
-    await KostRoom.update(
-      {
-        is_available: false,
-      },
-      {
-        where: {
-          id: req.body.room_id,
-        },
-      }
-    );
+    // await Kost.update(
+    //   {
+    //     is_available: false,
+    //   },
+    //   {
+    //     where: {
+    //       id: req.body.kos_id,
+    //     },
+    //   }
+    // );
 
     res.status(200).json({
       message: "Booking Success",
