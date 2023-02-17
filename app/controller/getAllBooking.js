@@ -4,6 +4,7 @@ const {
   Kost,
   SetupCity,
   SetupImage,
+  User,
 } = require("../../models/index");
 
 module.exports = async (req, res) => {
@@ -21,7 +22,15 @@ module.exports = async (req, res) => {
           attributes: {
             exclude: ["createdAt", "updatedAt"],
           },
-          include: [{ model: SetupCity }, { model: SetupImage }],
+          include: [
+            { model: SetupCity },
+            { model: SetupImage },
+            {
+              model: User,
+              as: "Owner",
+              attributes: ["fullname", "phone_number"],
+            },
+          ],
         },
       ],
       attributes: {

@@ -21,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       Kost.hasMany(models.SetupImage, {
         foreignKey: "kost_id",
       });
+      Kost.belongsTo(models.User, {
+        foreignKey: "owner_id",
+        as: "Owner",
+      });
     }
   }
   Kost.init(
