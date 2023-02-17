@@ -7,6 +7,7 @@ const postBooking = require("./controller/postBookingHandler");
 const putWillpay = require("./controller/putWillpayHandler");
 const putIsPaid = require("./controller/putIsPaidHandler");
 const getAllBooking = require("./controller/getAllBooking");
+const getOwnerBooking = require("./controller/getOwnerBooking");
 
 const {
   oauthGoogle,
@@ -33,5 +34,7 @@ router.put("/api/book/payment", auth, putIsPaid);
 
 router.get("/oauth/:role", oauthGoogle);
 router.get("/Callback", oauthCallback);
+
+router.get("/api/owner/book", auth, getOwnerBooking);
 
 module.exports = router;
